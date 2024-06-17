@@ -1,5 +1,6 @@
 import { G1Point, G2Point, Signature } from "../../crypto/bls/attestation.js"
-import { BlockNumber, MapOf, QuorumNum, Uint32, Uint8 } from '../../types/general.js'
+import { BlockNumber, MapOf, OperatorId, QuorumNum, Uint32, Uint8 } from '../../types/general.js'
+import { Address } from "web3"
 
 
 export type OperatorPubkeys = {
@@ -8,6 +9,20 @@ export type OperatorPubkeys = {
 	// G2 is used to verify signatures offchain (signatures are on G1)
     g2PubKey: G2Point,
 
+}
+
+export type Operator = {
+    address: Address,
+    earningsReceiverAddress: Address, // default: ""
+    delegationApproverAddress: Address, // default: ""
+    stakerOptOutWindowBlocks?: number,
+    metadataUrl: string, // default: ""
+}
+
+export type OperatorStateRetrieverOperator = {
+    operator: Address,
+    operatorId: OperatorId,
+    stake: BigInt,
 }
 
 export type OperatorInfo = {

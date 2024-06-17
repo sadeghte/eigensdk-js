@@ -29,7 +29,7 @@ function isResponseSerializable(res): boolean {
 		JSON.stringify(res);
 		return true
 	}
-	catch(e) {
+	catch{
 		return false;
 	}
 }
